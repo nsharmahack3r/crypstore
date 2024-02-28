@@ -1,7 +1,9 @@
+import 'package:crypstore/src/feature/favourites/controller/favourites_controller.dart';
 import 'package:crypstore/src/models/product.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProductView extends StatelessWidget {
+class ProductView extends ConsumerWidget {
   const ProductView({super.key, required this.product});
 
   static const path = "/product";
@@ -9,7 +11,8 @@ class ProductView extends StatelessWidget {
   final Product product;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isFavourite = ref.watch(favouriteControllerProvider).contains(product);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -51,9 +54,29 @@ class ProductView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      product.title,
-                      style: const TextStyle(fontSize: 22),
+                    Row(
+                      children: [
+                        Text(
+                          product.title,
+                          style: const TextStyle(fontSize: 22),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                          onPressed: (){
+                            ref.read(favouriteControllerProvider.notifier).update((state){
+                              if(isFavourite){
+                                //remove item from list
+                                state.removeWhere((element) => element.id == product.id);
+                              } else {
+                                // add item to list
+                                state = [product,...state];
+                              }
+                              return [...state];
+                            });
+                          }, 
+                          icon: isFavourite ? const Icon(Icons.favorite, color: Colors.redAccent,): const Icon(Icons.favorite_outline_outlined),
+                        ),
+                      ],
                     ),
                     Row(
                       children: [

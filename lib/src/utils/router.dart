@@ -1,5 +1,6 @@
 import 'package:crypstore/src/feature/authentication/views/login_view.dart';
 import 'package:crypstore/src/feature/authentication/views/signup_view.dart';
+import 'package:crypstore/src/feature/favourites/view/favourites.dart';
 import 'package:crypstore/src/feature/home/views/home.dart';
 import 'package:crypstore/src/feature/product/views/product_view.dart';
 import 'package:crypstore/src/models/product.dart';
@@ -32,5 +33,9 @@ final router = GoRouter(
   GoRoute(
     path: ProductView.path,
     builder: (context, state) => ProductView(product: state.extra as Product,),
+  ),
+  GoRoute(
+    path: FavouritesView.path,
+    builder: (context, state) => const FavouritesView(),
   ),
 ]);
