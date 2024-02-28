@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "753050658945",
+    "project_id": "crypstore-7efdf",
+    "storage_bucket": "crypstore-7efdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753050658945:android:904355920dd8c3f0fac580",
+        "android_client_info": {
+          "package_name": "com.example.crypstore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd7_bfoadV24uh_1Efpn5YpndqcojXVyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
